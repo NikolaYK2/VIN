@@ -1,0 +1,16 @@
+@import "assets/SCSS/fonts/play/play.css";
+@import "assets/SCSS/setting/settingDefault";
+@import "assets/SCSS/style/variable";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Play", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $bcApp;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  monospace;
+}

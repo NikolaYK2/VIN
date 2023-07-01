@@ -1,0 +1,103 @@
+* {
+  // - звездочка означает обращение ко всем тегам!
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  // - переращет ширины блока для удобства
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+// Например: при добавлении paddingov и границы border, фактический размер блока останется таким, каким мы его назначили (width, height) и не будет увеличиваться(как бы набухать) с новыми значения-ми(padding,border). На Свойства margin это не работает!!!
+//content-box - Основывается на стандартах CSS, при этом свойства width и height задают ширину и высоту контента и не включают в себя значения отступов, полей и границ.
+//padding-box - Свойства width и height включают в себя значения полей, но не отступов (margin) и границ (border).
+
+:focus,
+:active {
+  outline: none;
+}
+
+// – убираем линии обводки у некоторых браузеров
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  // - запрещает самовольное изменение шрифта
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1; // межстрочный интервал
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+//Просим унаследовать семейство шрифта
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+// – будет тот шрифт который устанавливаем в “body”
+//Убираем по умолчанию стили в некоторых браузерах
+input::-ms-clear {
+  display: none;
+}
+
+// – убираем крестик в form в браузере от MS
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+//		 – убирает элементы списка
+img {
+  vertical-align: top;
+}
+
+//Обнуление заголовков
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+  margin: 0;
+}

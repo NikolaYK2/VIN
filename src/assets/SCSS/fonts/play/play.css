@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Play";
+  src: local(".Play-Regular.eot");
+  src: url("Play-Regular.eot?#iefix") format("embedded-opentype"), url("Play-Regular.woff2") format("woff2"), url("Play-Regular.woff") format("woff"), url("Play-Regular.ttf") format("truetype"), url("Play-Regular.svg#Play-Regular") format("svg");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Play";
+  src: local("Play-Bold.eot");
+  src: url("Play-Bold.eot?#iefix") format("embedded-opentype"), url("Play-Bold.woff2") format("woff2"), url("Play-Bold.woff") format("woff"), url("Play-Bold.ttf") format("truetype"), url("Play-Bold.svg#Play-Bold") format("svg");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
