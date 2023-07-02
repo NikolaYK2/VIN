@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react"
 import s from "./Home.module.scss"
+import { Header } from "@/features/home/1-head/Header"
+import { Main } from "@/features/home/2-main/Main"
+import { Footer } from "@/features/home/3-footer/Footer"
 
 export const Home = () => {
   const [isReady, setIsReady] = useState(false)
@@ -10,9 +13,11 @@ export const Home = () => {
 
   return (
     isReady && (
-      <div>
-        <h1 className={s.h}>Hi, i app GYM TIME! We are #1 CrossFit gym</h1>
-      </div>
+      <section className={s.app}>
+        <Header />
+        <Main />
+        <Footer />
+      </section>
     )
   )
 }

@@ -1,0 +1,71 @@
+@import "@/assets/SCSS/style/variable.scss";
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  background: $HBc;
+
+  .logo {
+    width: 40px;
+    margin: 0 10px 0 5px;
+
+    svg {
+      path {
+        fill: $bcButAct;
+
+        &:first-child {
+          fill: $nBCPsevdo;
+        }
+      }
+    }
+  }
+
+  .nav {
+    flex: 0 1 auto;
+
+    background: $HNbc;
+    margin: 0 10% 0 0;
+
+    font-size: 1rem;
+
+    transform: translateY(15px);
+
+    ul {
+      display: flex;
+
+      li {
+        position: relative;
+        transition: all ease-in-out 0.3s;
+
+        &:not(:last-child):after {
+          position: absolute;
+          top: 21%;
+          right: -0.5px;
+          content: "";
+          width: 1px;
+          height: 20px;
+          background: $nBCPsevdo;
+
+          border-radius: 2px;
+          opacity: 0.4;
+        }
+
+        &:hover {
+          background: $bcButAct;
+          transition: all ease-in-out 0.3s;
+        }
+
+        a {
+          display: block;
+          color: $nBCPsevdo;
+
+          text-transform: uppercase;
+
+          padding: 10px 24px;
+        }
+      }
+    }
+  }
+}
