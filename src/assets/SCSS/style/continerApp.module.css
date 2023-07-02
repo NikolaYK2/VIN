@@ -1,0 +1,11 @@
+.containerApp {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.activeBut {
+  background: #70a903;
+}
+
+/*# sourceMappingURL=continerApp.module.css.map */
