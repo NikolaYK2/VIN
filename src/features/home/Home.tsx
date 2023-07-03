@@ -13,11 +13,11 @@ export const Home = () => {
 
   return (
     isReady && (
-      <section className={s.app}>
+      <div className={s.app}>
         <Header />
         <Main />
         <Footer />
-      </section>
+      </div>
     )
   )
 }

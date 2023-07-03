@@ -1,17 +1,184 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @import "@/assets/SCSS/style/variable.scss";
- *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   Header.module.scss 1:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"@/assets/SCSS/style/variable.scss\";\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   Header.module.scss 1:9  root stylesheet";
+.head {
+  background: #141516;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: 100%;
+  height: 40px;
+  z-index: 10;
 }
+.head .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.head .container .logo {
+  z-index: 10;
+  width: 40px;
+  margin: 0 10px 0 5px;
+}
+.head .container .logo svg path {
+  fill: #70a903;
+}
+.head .container .logo svg path:first-child {
+  fill: #fff;
+}
+.head .container .menuBurger {
+  display: none;
+}
+.head .container .nav {
+  background: rgb(74, 74, 74);
+  margin: 0 10% 0 0;
+  font-size: 1rem;
+  transform: translateY(21px);
+}
+.head .container .nav svg {
+  display: none;
+}
+.head .container .nav ul {
+  display: flex;
+}
+.head .container .nav ul li {
+  position: relative;
+  transition: all ease-in-out 0.3s;
+}
+.head .container .nav ul li:not(:last-child):after {
+  position: absolute;
+  top: 21%;
+  right: -0.5px;
+  content: "";
+  width: 1px;
+  height: 20px;
+  background: #fff;
+  z-index: 1;
+  border-radius: 2px;
+  opacity: 0.4;
+}
+.head .container .nav ul li:hover {
+  background: #70a903;
+  transition: all ease-in-out 0.3s;
+}
+.head .container .nav ul li a {
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 10px 24px;
+}
+@media (max-width: 400px) {
+  .head .container .nav {
+    display: "";
+    position: fixed;
+    top: -100%;
+    left: 0;
+    bottom: "";
+    right: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, rgb(74, 74, 74) 50%, rgba(112, 169, 3, 0.7) 50%, rgba(255, 255, 255, 0.1) 100%);
+    padding: 50px 30px 30px 30px;
+    transition: all 0.3s ease 0s;
+    opacity: 0;
+    overflow: auto;
+    z-index: 1;
+    border-radius: 0 0 40% 0;
+  }
+  .head .container .nav svg {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: "";
+    bottom: "";
+    right: 1%;
+    width: 100%;
+    height: 100%;
+    width: 1000px;
+  }
+  .head .container .nav svg path {
+    fill: #202122;
+  }
+  .head .container .nav ul {
+    display: flex;
+    flex-direction: column;
+    max-width: 100px;
+  }
+  .head .container .nav li {
+    padding: 10px 0;
+  }
+  .head .container .nav li:after {
+    display: none;
+  }
+  .head .container .nav.activeMenu {
+    top: 0;
+    transition: all 0.3s ease 0s;
+    opacity: 1;
+  }
+  .head .container .burger {
+    display: block;
+    position: relative;
+    top: 0;
+    left: "";
+    bottom: "";
+    right: 10px;
+    width: 30px;
+    height: 18px;
+    z-index: 5;
+    cursor: pointer;
+  }
+  .head .container .burger span, .head .container .burger:before, .head .container .burger:after {
+    display: block;
+    position: absolute;
+    top: "";
+    left: 0;
+    bottom: "";
+    right: "";
+    width: 100%;
+    height: 10%;
+    transition: all 0.3s ease 0s;
+    background: #fff;
+  }
+  .head .container .burger:before, .head .container .burger:after {
+    content: "";
+  }
+  .head .container .burger:before {
+    top: 0;
+  }
+  .head .container .burger:after {
+    bottom: 0;
+  }
+  .head .container .burger span {
+    top: 50%;
+    transform: scale(1) translate(0px, -50%);
+  }
+  .head .container .burger.activeBurger span {
+    transform: scale(0) translate(0px, -50%);
+  }
+  .head .container .burger.activeBurger:before {
+    top: 50%;
+    transform: rotate(-45deg) translate(0px, -50%);
+  }
+  .head .container .burger.activeBurger:after {
+    top: 50%;
+    transform: rotate(45deg) translate(0px, -50%);
+  }
+}
+
+@media (max-width: 400px) {
+  .head:after {
+    content: "";
+    display: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: "";
+    right: "";
+    width: 100%;
+    height: 40px;
+    background: #141516;
+    z-index: 2;
+  }
+}
+
+/*# sourceMappingURL=Header.module.css.map */

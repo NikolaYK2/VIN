@@ -1,0 +1,11 @@
+//POSITION -----------------------------------
+@mixin position($d, $p, $t, $l, $b, $r, $w, $h) {
+  display: $d;
+  position: $p;
+  top: $t;
+  left: $l;
+  bottom: $b;
+  right: $r;
+  width: $w;
+  height: $h;
+}

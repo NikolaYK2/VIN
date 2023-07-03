@@ -1,71 +1,207 @@
-@import "@/assets/SCSS/style/variable.scss";
+@import "../../../assets/SCSS/style/variable";
+@import "../../../assets/SCSS/mixin/mixins";
 
 .head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 30px;
   background: $HBc;
+  @include position(
+    flex,
+    fixed,
+    0,
+    0,
+    "",
+    "",
+    100%,
+    40px
+  ); //Делаем для бургер меню и вообще по умолчанию для header
 
-  .logo {
-    width: 40px;
-    margin: 0 10px 0 5px;
+  z-index: 10;
 
-    svg {
-      path {
-        fill: $bcButAct;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        &:first-child {
-          fill: $nBCPsevdo;
+    .logo {
+      z-index: 10;
+      width: 40px;
+      margin: 0 10px 0 5px;
+
+      svg {
+        path {
+          fill: $bcButAct;
+
+          &:first-child {
+            fill: $nBCPsevdo;
+          }
         }
       }
     }
-  }
 
-  .nav {
-    flex: 0 1 auto;
+    .menuBurger {
+      display: none;
+    }
 
-    background: $HNbc;
-    margin: 0 10% 0 0;
+    //menu ------------------
+    .nav {
+      background: $HNbc;
+      margin: 0 10% 0 0;
+      font-size: 1rem;
 
-    font-size: 1rem;
+      transform: translateY(21px);
 
-    transform: translateY(15px);
+      svg {
+        display: none;
+      }
 
-    ul {
-      display: flex;
+      ul {
+        display: flex;
 
-      li {
-        position: relative;
-        transition: all ease-in-out 0.3s;
-
-        &:not(:last-child):after {
-          position: absolute;
-          top: 21%;
-          right: -0.5px;
-          content: "";
-          width: 1px;
-          height: 20px;
-          background: $nBCPsevdo;
-
-          border-radius: 2px;
-          opacity: 0.4;
-        }
-
-        &:hover {
-          background: $bcButAct;
+        li {
+          position: relative;
           transition: all ease-in-out 0.3s;
-        }
 
-        a {
-          display: block;
-          color: $nBCPsevdo;
+          &:not(:last-child):after {
+            position: absolute;
+            top: 21%;
+            right: -0.5px;
+            content: "";
+            width: 1px;
+            height: 20px;
+            background: $nBCPsevdo;
+            z-index: 1;
 
-          text-transform: uppercase;
+            border-radius: 2px;
+            opacity: 0.4;
+          }
 
-          padding: 10px 24px;
+          &:hover {
+            background: $bcButAct;
+            transition: all ease-in-out 0.3s;
+          }
+
+          a {
+            display: block;
+            color: $nBCPsevdo;
+
+            text-transform: uppercase;
+
+            padding: 10px 24px;
+          }
         }
       }
+    }
+
+    //menu burger -----------------------------------
+    @media (max-width: 400px) {
+      .nav {
+        @include position("", fixed, -100%, 0, "", "", 100%, 100%);
+        //background: url("../../../assets/image/SVG/header/menuBurger.svg") top right/cover no-repeat,
+        //  linear-gradient(160deg, $bcMenu1 50%, $bcMenu2 50%, $bcMenu3 100%);
+        background: linear-gradient(
+          160deg,
+          $bcMenu1 50%,
+          $bcMenu2 50%,
+          $bcMenu3 100%
+        );
+        padding: 50px 30px 30px 30px;
+        transition: all 0.3s ease 0s;
+        opacity: 0;
+        overflow: auto;
+        z-index: 1;
+        border-radius: 0 0 40% 0;
+
+        svg {
+          @include position(flex, absolute, 0, "", "", 1%, 100%, 100%);
+          width: 1000px;
+
+          path {
+            fill: $appBc;
+          }
+        }
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          max-width: 100px;
+        }
+
+        li {
+          padding: 10px 0;
+
+          &:after {
+            display: none;
+          }
+        }
+
+        &.activeMenu {
+          top: 0;
+          transition: all 0.3s ease 0s;
+          opacity: 1;
+        }
+      }
+      //burger -----------------------------------
+      .burger {
+        @include position(block, relative, 0, "", "", 10px, 30px, 18px);
+        z-index: 5;
+        cursor: pointer;
+
+        //с помощью трех обьектов рисуем 3 полоски --------
+        span,
+        &:before,
+        &:after {
+          @include position(block, absolute, "", 0, "", "", 100%, 10%);
+          transition: all 0.3s ease 0s;
+          background: $colorApp;
+        }
+
+        &:before,
+        &:after {
+          content: "";
+        }
+
+        &:before {
+          top: 0;
+        }
+
+        &:after {
+          bottom: 0;
+        }
+
+        span {
+          top: 50%;
+          transform: scale(1) translate(0px, -50%);
+        }
+
+        &.activeBurger {
+          span {
+            transform: scale(0) translate(0px, -50%);
+          }
+
+          &:before {
+            top: 50%;
+            transform: rotate(-45deg) translate(0px, -50%);
+          }
+
+          &:after {
+            top: 50%;
+            transform: rotate(45deg) translate(0px, -50%);
+          }
+        }
+
+        //--------------------------------------------------
+      }
+    }
+  }
+}
+
+//ДЛЯ БУРГЕР МЕНЮ ---------------------------------------------
+@media (max-width: 400px) {
+  .head {
+    &:after {
+      content: "";
+      @include position("", fixed, 0, 0, "", "", 100%, 40px);
+      background: $HBc;
+      z-index: 2;
     }
   }
 }
