@@ -1,12 +1,19 @@
 @import "variable.scss";
 
-
 .containerDefaultApp {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
 }
 
-.activeBut{
+.activeBut {
   background: $bcButAct;
+
+  div {
+    svg {
+      path {
+        fill: $HBc;
+      }
+    }
+  }
 }

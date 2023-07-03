@@ -1,0 +1,51 @@
+.profile {
+  padding: 50px 0 10px;
+  height: 100%;
+}
+.profile .container {
+  height: 100%;
+  display: flex;
+}
+.profile .container .asideBar {
+  max-width: 140px;
+  width: 100%;
+  background: rgb(74, 74, 74);
+  transform: translate(0, -150%);
+  transition: all 0.3s ease 0s;
+}
+.profile .container .asideBar .nav {
+  padding: 20px 5px;
+}
+.profile .container .asideBar .nav ul {
+  display: flex;
+  flex-direction: column;
+}
+.profile .container .asideBar .nav ul li {
+  position: relative;
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: "";
+  height: "";
+  padding: 10px 0;
+}
+.profile .container .asideBar .nav ul li a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-transform: uppercase;
+}
+.profile .container .asideBar .nav ul li a div {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+.profile .container .activeBar {
+  transition: all 0.3s ease 0s;
+  transform: translate(0, 0%);
+}
+
+/*# sourceMappingURL=Profile.module.css.map */

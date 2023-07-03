@@ -1,0 +1,54 @@
+@import "../../../../../assets/SCSS/style/variable";
+@import "../../../../../assets/SCSS/mixin/mixins";
+
+.profile {
+  padding: 50px 0 10px;
+  height: 100%;
+
+  .container {
+    height: 100%;
+    display: flex;
+
+    .asideBar {
+      max-width: 140px;
+      width: 100%;
+      background: $HNbc;
+      transform: translate(0, -150%);
+      transition: all 0.3s ease 0s;
+
+      .nav {
+        padding: 20px 5px;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+
+          li {
+            position: relative;
+            @include position(block, relative, 0, 0, "", "", "", "");
+            padding: 10px 0;
+
+            a {
+              display: flex;
+              align-items: center;
+              color: $colorApp;
+              text-transform: uppercase;
+
+              div {
+                width: 30px;
+                height: 30px;
+
+                margin: 0 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .activeBar {
+      transition: all 0.3s ease 0s;
+      transform: translate(0, 0%);
+    }
+  }
+}

@@ -41,7 +41,7 @@ export const Header = () => {
           <ul>
             <li>
               <NavLink
-                to="/"
+                to="profile"
                 className={({ isActive }) => (isActive ? sApp.activeBut : "")}
               >
                 Profile

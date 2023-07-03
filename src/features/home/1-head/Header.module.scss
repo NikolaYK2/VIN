@@ -12,7 +12,7 @@
     "",
     100%,
     40px
-  ); //Делаем для бургер меню и вообще по умолчанию для header
+  ); //Делаем для бургер меню и вообще по умолчанию для 1-header
 
   z-index: 10;
 
@@ -92,10 +92,10 @@
     }
 
     //menu burger -----------------------------------
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
       .nav {
         @include position("", fixed, -100%, 0, "", "", 100%, 100%);
-        //background: url("../../../assets/image/SVG/header/menuBurger.svg") top right/cover no-repeat,
+        //background: url("../../../assets/image/SVG/1-header/menuBurger.svg") top right/cover no-repeat,
         //  linear-gradient(160deg, $bcMenu1 50%, $bcMenu2 50%, $bcMenu3 100%);
         background: linear-gradient(
           160deg,
@@ -111,7 +111,7 @@
         border-radius: 0 0 40% 0;
 
         svg {
-          @include position(flex, absolute, 0, "", "", 1%, 100%, 100%);
+          @include position(flex, absolute, 0, "", "", -6%, 100%, 100%);
           width: 1000px;
 
           path {
@@ -195,7 +195,7 @@
 }
 
 //ДЛЯ БУРГЕР МЕНЮ ---------------------------------------------
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .head {
     &:after {
       content: "";

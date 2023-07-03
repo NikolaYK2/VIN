@@ -67,7 +67,7 @@
   text-transform: uppercase;
   padding: 10px 24px;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .head .container .nav {
     display: "";
     position: fixed;
@@ -91,7 +91,7 @@
     top: 0;
     left: "";
     bottom: "";
-    right: 1%;
+    right: -6%;
     width: 100%;
     height: 100%;
     width: 1000px;
@@ -165,7 +165,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .head:after {
     content: "";
     display: "";

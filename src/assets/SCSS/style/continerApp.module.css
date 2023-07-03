@@ -7,5 +7,8 @@
 .activeBut {
   background: #70a903;
 }
+.activeBut div svg path {
+  fill: #141516;
+}
 
 /*# sourceMappingURL=continerApp.module.css.map */
