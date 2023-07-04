@@ -25,6 +25,10 @@ export const Header = () => {
     setSwitchNav(!switchNav)
   }
 
+  const activeLinkHandle = () => {
+    setSwitchNav(true)
+  }
+
   return (
     <section className={`${s.head}`}>
       <div className={`${s.container} ${sApp.containerDefaultApp}`}>
@@ -43,6 +47,7 @@ export const Header = () => {
               <NavLink
                 to="profile"
                 className={({ isActive }) => (isActive ? sApp.activeBut : "")}
+                onClick={activeLinkHandle}
               >
                 Profile
               </NavLink>

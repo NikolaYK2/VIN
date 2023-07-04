@@ -1,11 +1,11 @@
 import "./App.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { Home } from "@/features/home/Home"
-import { Profile } from "@/features/home/2-main/auth/profile/Profile"
-import { Login } from "@/features/home/2-main/auth/login/Login"
-import { Register } from "@/features/home/2-main/auth/register/Register"
-import { CheckEmail } from "@/features/home/2-main/auth/checkEmail/CheckEmail"
-import { Message } from "@/features/home/2-main/auth/profile/message/Message"
+import { Profile } from "@/features/home/auth/profile/Profile"
+import { Login } from "@/features/home/auth/login/Login"
+import { Register } from "@/features/home/auth/register/Register"
+import { CheckEmail } from "@/features/home/auth/checkEmail/CheckEmail"
+import { Message } from "@/features/home/auth/profile/message/Message"
 
 const router = createBrowserRouter([
   {
