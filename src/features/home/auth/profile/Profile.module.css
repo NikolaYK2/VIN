@@ -44,7 +44,7 @@
   margin: 0 5px;
 }
 .profile .container .activeBar {
-  transition: all 0.3s ease 0s;
+  transition: all 0.3s ease-in-out 0s;
   transform: translate(0, 0%);
 }
 

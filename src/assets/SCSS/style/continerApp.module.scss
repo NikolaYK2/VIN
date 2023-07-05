@@ -1,4 +1,5 @@
 @import "variable.scss";
+@import "../mixin/mixins";
 //для заголовков -----------------
 .containerDefaultApp {
   max-width: 1200px;
@@ -7,12 +8,97 @@
 }
 
 //Для окон auth -----------------
-.containerAuth{
-
+@keyframes borBotTo {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
-  //для активных кнопок -----------
+
+@keyframes borBotIs {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.containerAuth {
+  max-width: 505px;
+  width: 100%;
+  height: auto;
+
+  margin: 10% auto;
+  padding: 40px 40px 40px 60px;
+
+  background: $HNbc;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+
+    .blockInput {
+      @include position(block, relative, 0, 0, "", "", 100%, 40px);
+
+      margin: 0 0 14px;
+
+      //INPUT -------------------------------
+      input {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        padding: 6px 12px 6px;
+        border-bottom: $border;
+        border-radius: $radiusWindow;
+        transition: all 0.3s ease 0s;
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: $colorApp;
+
+        z-index: 2000;
+
+        &:-webkit-autofill {
+          transition: all 5000s ease-in-out 0s;
+        }
+      }
+
+      .inputOk {
+        border-bottom: 2px solid #70a903;
+      }
+
+      .borderInput {
+        @include position(block, absolute, "", "", 0, "", "", "");
+      }
+
+      //-----------------------------------------
+
+      > p {
+        height: 14px;
+      }
+    }
+  }
+}
+
+.is {
+  animation: borBotIs 0.8s forwards;
+  border-bottom: 2px solid $active;
+}
+
+.as {
+  animation: borBotTo 0.5s forwards;
+  border-bottom: 2px solid $active;
+}
+
+//для активных кнопок -----------
 .activeBut {
-  background: $bcButAct;
+  transition: all 0.3s ease 0s;
+  background: $active;
 
   div {
     svg {

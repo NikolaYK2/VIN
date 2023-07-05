@@ -45,6 +45,15 @@ export const Header = () => {
           <ul>
             <li>
               <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? sApp.activeBut : "")}
+                onClick={activeLinkHandle}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="profile"
                 className={({ isActive }) => (isActive ? sApp.activeBut : "")}
                 onClick={activeLinkHandle}

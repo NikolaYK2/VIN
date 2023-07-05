@@ -1,19 +1,26 @@
 //App ================================
 $appBc: #202122;
-$colorApp:#fff;
+$colorApp: #fff;
 
 //Header ---------------------------
-$HBc: #141516;
+$HBc: rgba(20, 21, 22, 0.7);
 //nav ---
 $HNbc: rgba(74, 74, 74, 1);
 $nBCPsevdo: #fff;
 
 
 //BATTON --------------------------
-$bcButAct:#70a903;
+$active: #70a903;
 
 
 //menu burger -------------------
 $bcMenu1: rgba(74, 74, 74, 1);
 $bcMenu2: rgba(112, 169, 3, 0.7);
 $bcMenu3: rgba(255, 255, 255, 0.1);
+
+
+//WINDOW ВКЛАДКИ ----------------------
+$radiusWindow: 0 0 0 0;
+
+//BORDER ----------------------------
+$border: 2px solid rgba(255, 255, 255, 0.5)
