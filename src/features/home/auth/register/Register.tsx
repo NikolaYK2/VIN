@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { AuthRegisterType } from "@/features/home/auth/authApi"
 import { fieldInput, fieldPassword, validEmail } from "@/common/utils/validate"
@@ -12,9 +12,8 @@ export const Register = () => {
     register,
     handleSubmit,
     watch,
-    setFocus,
-    reset,
-    formState: { errors, isSubmitting, isDirty },
+    setValue,
+    formState: { errors, touchedFields },
   } = useForm<AuthType>({
     mode: "onBlur",
     defaultValues: {
@@ -27,18 +26,11 @@ export const Register = () => {
   const onSubmit: SubmitHandler<AuthRegisterType> = (data) => {
     console.log(data)
   }
-  //STYLE ---------------------------------------
+  //STYLE INPUT---------------------------------------
   const activeEm = watch().email ? sApp.inputOk : ""
   const activePas = watch().password ? sApp.inputOk : ""
   const activeReapPas = watch().repeatPassword ? sApp.inputOk : ""
-  const [borderInput, setBorderInput] = useState("")
 
-  const blurInputHandle = () => {
-    setBorderInput(sApp.isActiveBorder)
-  }
-  const clickInputHandle = () => {
-    setBorderInput(sApp.activeBorder)
-  }
   return (
     <div className={sApp.containerAuth}>
       <p>hi friends!!!</p>
@@ -46,7 +38,6 @@ export const Register = () => {
       <form className={sApp.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={sApp.blockInput}>
           <input
-            id={"1"}
             className={activeEm}
             type="email"
             {...register("email", {
@@ -56,13 +47,15 @@ export const Register = () => {
                 message: "Enter a valid e-mail address",
               },
             })}
-            onBlur={blurInputHandle}
-            onClick={clickInputHandle}
+            onChange={(e) =>
+              setValue("email", e.currentTarget.value, { shouldValidate: true })
+            }
           />
-          <div className={`${sApp.borderInput} ${borderInput}`}></div>
           <label className={watch().email ? sApp.modLabel : ""}>Email</label>
-          <p>{errors.email?.message}</p>
+          <div className={touchedFields.email ? sApp.isActiveBorder : ""}></div>
+          <p>{errors.email ? errors.email.message : ""}</p>
         </div>
+
         <div className={sApp.blockInput}>
           <input
             className={activePas}
@@ -71,11 +64,21 @@ export const Register = () => {
               minLength: { value: 6, message: fieldPassword },
               required: fieldInput,
             })}
+            onChange={(e) =>
+              setValue("password", e.currentTarget.value, {
+                shouldValidate: true,
+              })
+            }
           />
-          <div className={sApp.borderInput}></div>
-          <label></label>
-          <p></p>
+          <label className={watch().password ? sApp.modLabel : ""}>
+            Password
+          </label>
+          <div
+            className={touchedFields.password ? sApp.isActiveBorder : ""}
+          ></div>
+          <p>{errors.password ? errors.password.message : ""}</p>
         </div>
+
         <div className={sApp.blockInput}>
           <input
             className={activeReapPas}
@@ -85,10 +88,19 @@ export const Register = () => {
               validate: (value: string) =>
                 value === watch("password") || "Password do not match",
             })}
+            onChange={(e) =>
+              setValue("repeatPassword", e.currentTarget.value, {
+                shouldValidate: true,
+              })
+            }
           />
-          <div className={sApp.borderInput}></div>
-          <label></label>
-          <p></p>
+          <label className={watch().repeatPassword ? sApp.modLabel : ""}>
+            Repeat Password
+          </label>
+          <div
+            className={touchedFields.repeatPassword ? sApp.isActiveBorder : ""}
+          ></div>
+          <p>{errors.repeatPassword ? errors.repeatPassword.message : ""}</p>
         </div>
       </form>
     </div>

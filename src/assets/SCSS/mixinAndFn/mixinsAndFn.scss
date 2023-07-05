@@ -12,5 +12,5 @@
 
 //FONT SIZE CONVERTER -------------------------
 @function to-rem($size) {
-  @return $size / 14 * 1rem;
+  @return calc($size / 14 * 1rem);
 }

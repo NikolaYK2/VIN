@@ -50,7 +50,7 @@
     text-align: start;
     text-transform: capitalize;
 
-    margin: 3px 0 24px;
+    margin: 3px 0 0;
   }
 
   .form {
@@ -60,28 +60,39 @@
     .blockInput {
       @include position(block, relative, 0, 0, "", "", 100%, 40px);
 
-      margin: 0 0 14px;
+      margin: 40px 0 0 0;
 
       //INPUT -------------------------------
       input {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        padding: 6px 12px 6px;
-        border-bottom: $border;
-        border-radius: $radiusWindow;
-        transition: all 0.3s ease 0s;
+        @include position(block, relative, 0, 0, "", "", 100%, 100%);
 
         font-weight: 500;
         font-size: 16px;
-        line-height: 24px;
         color: $colorApp;
 
-        z-index: 2000;
+        background: transparent;
+
+        padding: 6px 12px;
+
+        border-bottom: $border;
+        border-radius: $radiusWindow;
+
+        transition: all 0.3s ease 0s;
+        z-index: 2;
 
         &:-webkit-autofill {
           transition: all 5000s ease-in-out 0s;
+        }
+
+        &:focus + label {
+          transform: translate(0, -25px) scale(0.8);
+          transform-origin: top left;
+          transition: all 0.3s ease-out 0s;
+        }
+
+        &:focus + label + div {
+          animation: borBotTo 0.5s forwards;
+          border-bottom: 2px solid $active;
         }
       }
 
@@ -89,30 +100,39 @@
         border-bottom: 2px solid $active;
       }
 
-      .borderInput {
+      //border input -
+      div {
         @include position(block, absolute, "", "", 0, "", "", "");
+        border-bottom: 2px solid $active;
       }
 
-      //-----------------------------------------
-
-      > label {
+      .isActiveBorder {
+        animation: borBotIs 0.8s forwards;
+        border-bottom: 2px solid $active;
       }
 
-      > p {
-        height: 14px;
+      //LABEL-----------------------------------------
+
+      label {
+        @include position(block, absolute, "", 12px, 12px, "", "", "");
+        transition: all 0.3s ease-out 0s;
+        z-index: 1;
+        opacity: 0.6;
+      }
+
+      .modLabel {
+        transition: all 0.3s ease-out 0s;
+        transform: translate(0, -25px) scale(0.8);
+        transform-origin: top left;
+      }
+
+      //--------------------------------------------------
+      p {
+        margin: 2px 0 0 12px;
+        color: $coloError;
       }
     }
   }
-}
-
-.isActiveBorder {
-  animation: borBotIs 0.8s forwards;
-  border-bottom: 2px solid $active;
-}
-
-.activeBorder {
-  animation: borBotTo 0.5s forwards;
-  border-bottom: 2px solid $active;
 }
 
 //для активных кнопок -----------

@@ -39,7 +39,7 @@
   font-weight: 700;
   text-align: start;
   text-transform: capitalize;
-  margin: 3px 0 24px;
+  margin: 3px 0 0;
 }
 .containerAuth .form {
   display: flex;
@@ -54,30 +54,43 @@
   right: "";
   width: 100%;
   height: 40px;
-  margin: 0 0 14px;
+  margin: 40px 0 0 0;
 }
 .containerAuth .form .blockInput input {
   display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
   width: 100%;
   height: 100%;
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
   background: transparent;
-  padding: 6px 12px 6px;
+  padding: 6px 12px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 0 0 0 0;
   transition: all 0.3s ease 0s;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #fff;
-  z-index: 2000;
+  z-index: 2;
 }
 .containerAuth .form .blockInput input:-webkit-autofill {
   transition: all 5000s ease-in-out 0s;
 }
+.containerAuth .form .blockInput input:focus + label {
+  transform: translate(0, -25px) scale(0.8);
+  transform-origin: top left;
+  transition: all 0.3s ease-out 0s;
+}
+.containerAuth .form .blockInput input:focus + label + div {
+  animation: borBotTo 0.5s forwards;
+  border-bottom: 2px solid #70a903;
+}
 .containerAuth .form .blockInput .inputOk {
   border-bottom: 2px solid #70a903;
 }
-.containerAuth .form .blockInput .borderInput {
+.containerAuth .form .blockInput div {
   display: block;
   position: absolute;
   top: "";
@@ -86,19 +99,33 @@
   right: "";
   width: "";
   height: "";
+  border-bottom: 2px solid #70a903;
 }
-.containerAuth .form .blockInput > p {
-  height: 14px;
-}
-
-.isActiveBorder {
+.containerAuth .form .blockInput .isActiveBorder {
   animation: borBotIs 0.8s forwards;
   border-bottom: 2px solid #70a903;
 }
-
-.activeBorder {
-  animation: borBotTo 0.5s forwards;
-  border-bottom: 2px solid #70a903;
+.containerAuth .form .blockInput label {
+  display: block;
+  position: absolute;
+  top: "";
+  left: 12px;
+  bottom: 12px;
+  right: "";
+  width: "";
+  height: "";
+  transition: all 0.3s ease-out 0s;
+  z-index: 1;
+  opacity: 0.6;
+}
+.containerAuth .form .blockInput .modLabel {
+  transition: all 0.3s ease-out 0s;
+  transform: translate(0, -25px) scale(0.8);
+  transform-origin: top left;
+}
+.containerAuth .form .blockInput p {
+  margin: 2px 0 0 12px;
+  color: red;
 }
 
 .activeBut {
