@@ -1,5 +1,5 @@
 @import "variable.scss";
-@import "../mixin/mixins";
+@import "../../../assets/SCSS/mixinAndFn/mixinsAndFn";
 //для заголовков -----------------
 .containerDefaultApp {
   max-width: 1200px;
@@ -35,6 +35,23 @@
   padding: 40px 40px 40px 60px;
 
   background: $HNbc;
+  color: $colorApp;
+
+  > p {
+    text-transform: uppercase;
+    font-size: to-rem(10);
+    letter-spacing: 11.5px;
+  }
+
+  > h1 {
+    font-size: to-rem(24);
+    font-weight: 700;
+
+    text-align: start;
+    text-transform: capitalize;
+
+    margin: 3px 0 24px;
+  }
 
   .form {
     display: flex;
@@ -69,7 +86,7 @@
       }
 
       .inputOk {
-        border-bottom: 2px solid #70a903;
+        border-bottom: 2px solid $active;
       }
 
       .borderInput {
@@ -78,6 +95,9 @@
 
       //-----------------------------------------
 
+      > label {
+      }
+
       > p {
         height: 14px;
       }
@@ -85,12 +105,12 @@
   }
 }
 
-.is {
+.isActiveBorder {
   animation: borBotIs 0.8s forwards;
   border-bottom: 2px solid $active;
 }
 
-.as {
+.activeBorder {
   animation: borBotTo 0.5s forwards;
   border-bottom: 2px solid $active;
 }

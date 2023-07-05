@@ -9,3 +9,8 @@
   width: $w;
   height: $h;
 }
+
+//FONT SIZE CONVERTER -------------------------
+@function to-rem($size) {
+  @return $size / 14 * 1rem;
+}

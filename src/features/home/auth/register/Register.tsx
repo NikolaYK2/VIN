@@ -31,16 +31,17 @@ export const Register = () => {
   const activeEm = watch().email ? sApp.inputOk : ""
   const activePas = watch().password ? sApp.inputOk : ""
   const activeReapPas = watch().repeatPassword ? sApp.inputOk : ""
-  const [st, setSt] = useState("")
+  const [borderInput, setBorderInput] = useState("")
 
   const blurInputHandle = () => {
-    setSt(sApp.is)
+    setBorderInput(sApp.isActiveBorder)
   }
   const clickInputHandle = () => {
-    setSt(sApp.as)
+    setBorderInput(sApp.activeBorder)
   }
   return (
     <div className={sApp.containerAuth}>
+      <p>hi friends!!!</p>
       <h1>sign-up</h1>
       <form className={sApp.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={sApp.blockInput}>
@@ -58,7 +59,7 @@ export const Register = () => {
             onBlur={blurInputHandle}
             onClick={clickInputHandle}
           />
-          <div className={`${sApp.borderInput} ${st}`}></div>
+          <div className={`${sApp.borderInput} ${borderInput}`}></div>
           <label className={watch().email ? sApp.modLabel : ""}>Email</label>
           <p>{errors.email?.message}</p>
         </div>
