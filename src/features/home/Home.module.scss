@@ -1,4 +1,4 @@
-@import "@/assets/SCSS/style/variable.scss";
+@import "../../assets/SCSS/style/variable.scss";
 
 .app {
   display: flex;
@@ -8,5 +8,11 @@
 
   height: 100%;
 
-  background: $appBc;
+  //background: $appBc;
+  background-image:linear-gradient(to right, rgba(0,0,0, 0.7) , rgba(0,0,0, 0.7)), url("../../assets/image/imgWeb/home/hom.webp"),
+    url("../../assets/image/imgWeb/home/hom.jpg");
+  background-size: cover;
+  background-position: 0 90%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }

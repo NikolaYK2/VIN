@@ -2,17 +2,17 @@
 @import "../../../assets/SCSS/mixinAndFn/mixinsAndFn";
 
 .head {
-  background: $HBc;
   @include position(
-    flex,
-    fixed,
-    0,
-    0,
-    "",
-    "",
-    100%,
-    40px
-  ); //Делаем для бургер меню и вообще по умолчанию для 1-header
+  flex,
+  fixed,
+  0,
+  0,
+"",
+"",
+100%,
+  40px
+); //Делаем для бургер меню и вообще по умолчанию для 1-header $HBc 80%
+  background: linear-gradient(180deg , $HBc 50%, rgba(20, 21, 22, 0.01) 100%);
 
   z-index: 10;
 
@@ -94,7 +94,7 @@
     //menu burger -----------------------------------
     @media (max-width: 590px) {
       .nav {
-        @include position("", fixed, -100%, 0, "", "", 100%, 90%);
+        @include position("", fixed, -100%, 0, "", "", 100%, 95%);
         //background: url("../../../assets/image/SVG/1-header/menuBurger.svg") top right/cover no-repeat,
         //  linear-gradient(160deg, $bcMenu1 50%, $bcMenu2 50%, $bcMenu3 100%);
         background: linear-gradient(
@@ -200,7 +200,8 @@
     &:after {
       content: "";
       @include position("", fixed, 0, 0, "", "", 100%, 40px);
-      background: $HBc;
+      background: linear-gradient(180deg , $HBc 50%, rgba(20, 21, 22, 0.01) 100%);
+
       z-index: 2;
     }
   }

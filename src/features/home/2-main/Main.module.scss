@@ -10,7 +10,7 @@
     align-items: center;
     flex-wrap: wrap;
 
-    margin: 20% auto 0;
+    margin: 13% auto 0;
 
     .item {
       flex: 1 1 40%;
@@ -19,14 +19,14 @@
 
       > h2 {
         font-size: clamp(to-rem(18), 5vw, to-rem(36));
-
-        //font-size: clamp(to-rem(14)  5vw to-rem(36));
-        //@include adapt-font(36, 14);
         font-weight: 700;
+
+        margin: 0 0 30px;
       }
 
       > p {
         font-size: clamp(to-rem(14), 5vw, to-rem(16));
+        line-height: 1.5;
       }
     }
 
@@ -35,6 +35,7 @@
       justify-content: end;
       flex: 1 1 60%;
       padding: 0 10px;
+      .switchAuth{}
     }
   }
 }

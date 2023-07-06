@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin: 20% auto 0;
+  margin: 13% auto 0;
 }
 .main .container .item {
   flex: 1 1 40%;
@@ -16,9 +16,11 @@
 .main .container .item > h2 {
   font-size: clamp(1.2857142857rem, 5vw, 2.5714285714rem);
   font-weight: 700;
+  margin: 0 0 30px;
 }
 .main .container .item > p {
   font-size: clamp(1rem, 5vw, 1.1428571429rem);
+  line-height: 1.5;
 }
 .main .container .componentAuth {
   display: flex;
