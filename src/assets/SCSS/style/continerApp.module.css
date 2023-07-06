@@ -127,6 +127,9 @@
   margin: 2px 0 0 12px;
   color: red;
 }
+.containerAuth .form > div {
+  margin-top: 46px;
+}
 
 .activeBut {
   transition: all 0.3s ease 0s;

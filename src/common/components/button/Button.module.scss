@@ -1,0 +1,32 @@
+@import "../../../assets/SCSS/mixinAndFn/mixinsAndFn";
+@import "../../../assets/SCSS/style/variable";
+
+.container {
+  display: flex;
+  margin: 0 auto 0 0;
+  max-width: 100%;
+  background: $active;
+  border: 1px solid $active;
+  transition: all 0.2s ease 0s;
+
+  &:hover {
+    background: none;
+    border: 1px solid $active;
+    box-shadow: 1px 1px 2px $HNbc, 2px 2px 2px black, inset 1px 1px 2px $HNbc,
+      inset 2px 2px 2px black;
+  }
+
+  > button {
+    font-size: to-rem(14);
+    font-weight: 700;
+    text-transform: uppercase;
+    background: transparent;
+    color: $colorApp;
+
+    padding: 10px 13px;
+
+    &:hover {
+      text-shadow: 1px 1px 2px black;
+    }
+  }
+}
