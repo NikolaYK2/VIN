@@ -11,6 +11,9 @@
   border: 1px solid #70a903;
   box-shadow: 1px 1px 2px rgb(74, 74, 74), 2px 2px 2px black, inset 1px 1px 2px rgb(74, 74, 74), inset 2px 2px 2px black;
 }
+.container:active {
+  box-shadow: none;
+}
 .container > button {
   font-size: 1rem;
   font-weight: 700;
@@ -21,6 +24,9 @@
 }
 .container > button:hover {
   text-shadow: 1px 1px 2px black;
+}
+.container > button:active {
+  text-shadow: none;
 }
 
 /*# sourceMappingURL=Button.module.css.map */

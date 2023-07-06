@@ -1,4 +1,40 @@
+@import "../../../assets/SCSS/style/variable";
+@import "../../../assets/SCSS/mixinAndFn/mixinsAndFn";
+
 .main {
   flex: 1 1 auto;
   border: 2px solid red;
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin: 20% auto 0;
+
+    .item {
+      flex: 1 1 40%;
+      color: $colorApp;
+      padding:30px 30px 30px 10px;
+
+      > h2 {
+        font-size: clamp(to-rem(18), 5vw, to-rem(36));
+
+        //font-size: clamp(to-rem(14)  5vw to-rem(36));
+        //@include adapt-font(36, 14);
+        font-weight: 700;
+      }
+
+      > p {
+        font-size: clamp(to-rem(14), 5vw, to-rem(16));
+      }
+    }
+
+    .componentAuth {
+      display: flex;
+      justify-content: end;
+      flex: 1 1 60%;
+      padding: 0 10px;
+    }
+  }
 }
