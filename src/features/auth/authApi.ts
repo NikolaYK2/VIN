@@ -1,4 +1,4 @@
-import { authInstance } from "@/features/home/auth/authInstans"
+import { authInstance } from "@/features/auth/authInstans"
 
 //AUTH API TYPE -------------------------------------
 export type AuthProfileType = {

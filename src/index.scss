@@ -1,4 +1,4 @@
-@import "assets/SCSS/fonts/play/play.css";
+@import "assets/fonts/play/play.css";
 @import "assets/SCSS/setting/settingDefault";
 @import "assets/SCSS/style/variable";
 
@@ -11,9 +11,9 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-  monospace;
+    monospace;
 }
 
-#root{
+#root {
   height: 100%;
 }

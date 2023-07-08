@@ -1,6 +1,6 @@
 import React from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { AuthRegisterType } from "@/features/home/auth/authApi"
+import { AuthRegisterType } from "@/features/auth/authApi"
 import {
   fieldInput,
   fieldPassword,
