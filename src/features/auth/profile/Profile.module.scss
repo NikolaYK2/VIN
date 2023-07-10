@@ -13,7 +13,13 @@
     .asideBar {
       max-width: 140px;
       width: 100%;
-      background: $HNbc;
+      background: linear-gradient(
+        130deg,
+        rgb(74, 74, 74) 59%,
+        rgba(74, 74, 74, 0.5) 70%,
+        rgba(32, 33, 34, 0.1) 84%
+      );
+      //background: $HNbc;
       transform: translate(0, -150%);
       transition: all 0.3s ease 0s;
 
@@ -51,5 +57,35 @@
       transition: all 0.3s ease-in-out 0s;
       transform: translate(0, 0%);
     }
+
+    .items {
+      @include position(block, relative, 0, 0, "", "", 100%, "");
+      max-height: 300px;
+      margin: 3% 0 0;
+      border: 1px solid red;
+
+      picture {
+        @include position(block, absolute, 0, 0, "", "", 100%, '');
+        max-height: 300px;
+        height: 100%;
+        img,
+        source {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
   }
+}
+
+.activeBar {
+  transition: all 0.3s ease-in-out 0s;
+  transform: translate(0, 0%);
+}
+
+//ACTIVE PROF -------------------------------
+.activeProfile {
+  transition: all 0.5s ease-in-out 0s;
+  background: $appBc;
 }

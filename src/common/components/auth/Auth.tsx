@@ -9,6 +9,7 @@ import {
 } from "@/common/utils/validate"
 import s from "./Auth.module.scss"
 import { Button } from "@/common/components/button/Button"
+import { useAppDispatch } from "@/app/hooks"
 
 type AuthType = {
   greetings: string
@@ -22,6 +23,8 @@ type AuthForm = AuthRegisterType & {
 }
 
 export const Auth = (props: AuthType) => {
+  const dispatch = useAppDispatch()
+
   const {
     register,
     handleSubmit,

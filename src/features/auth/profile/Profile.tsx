@@ -1,21 +1,36 @@
-import React, { useEffect, useState } from "react"
+import React, { useLayoutEffect, useRef } from "react"
 import s from "./Profile.module.scss"
 import sApp from "@/assets/SCSS/style/continerApp.module.scss"
 import { NavLink } from "react-router-dom"
 import { IconSvg } from "@/assets/image/SVG/iconSVG"
+import bcProfJ from "@/assets/image/imgWeb/prof/bcProf.jpg"
+import bcProfW from "@/assets/image/imgWeb/prof/bcProf.webp"
 
 export const Profile = () => {
   console.log("prof")
-  const [styleProfile, setStyleProfile] = useState("")
+  // const [styleAsideBar, setStyleAsideBar] = useState("")
+  // const [styleProfile, setStyleProfile] = useState("")
+  //
+  // useLayoutEffect(() => {
+  //   setStyleAsideBar(s.activeBar)
+  //   setStyleProfile(s.activeProfile)
+  // }, [])
 
-  useEffect(() => {
-    setStyleProfile(s.activeBar)
+  //АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ ВМОНТИРОВАНИИ КОМПОНЕНТЫ ---------
+  const profileRef = useRef<HTMLElement>(null)
+  const asideBarRef = useRef<HTMLElement>(null)
+
+  useLayoutEffect(() => {
+    requestAnimationFrame(() => {
+      profileRef.current?.classList.add(s.activeProfile)
+      asideBarRef.current?.classList.add(s.activeBar)
+    })
   }, [])
 
   return (
-    <section className={s.profile}>
+    <section className={`${s.profile}`} ref={profileRef}>
       <div className={`${s.container} ${sApp.containerDefaultApp}`}>
-        <aside className={`${s.asideBar} ${styleProfile}`}>
+        <aside className={`${s.asideBar}`} ref={asideBarRef}>
           <nav className={s.nav}>
             <ul>
               <li>
@@ -44,7 +59,15 @@ export const Profile = () => {
             </ul>
           </nav>
         </aside>
-        <section className={s.items}></section>
+        <section className={s.items}>
+          <picture>
+            <source srcSet={bcProfW} type={"image/webp"} />
+            <source srcSet={bcProfJ} type={"image/jpg"} />
+            <img src={bcProfJ} alt="" />
+          </picture>
+
+          <div></div>
+        </section>
       </div>
     </section>
   )
