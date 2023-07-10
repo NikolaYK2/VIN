@@ -25,12 +25,17 @@
   max-width: 505px;
   min-width: 250px;
   height: 520px;
+  //height: 100%;
 
   margin: 0;
   padding: 40px 40px 40px 60px;
 
   background: $HNbc;
   color: $colorApp;
+
+  z-index: 1;
+
+  border-radius: 6px;
 
   > p {
     text-transform: uppercase;

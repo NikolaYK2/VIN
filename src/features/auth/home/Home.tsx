@@ -16,15 +16,29 @@ export const Home = () => {
         </div>
 
         <div className={s.componentAuth}>
-          <ul className={s.switchAuth}>
-            <li>
-              <NavLink to={"login"}>Login</NavLink>
-            </li>
-            <li>
-              <NavLink to={"register"}>Register</NavLink>
-            </li>
-          </ul>
-          <div className={s.data}>
+          <div className={s.block}>
+            <ul className={s.switchAuth}>
+              <li>
+                <NavLink
+                  to={"login"}
+                  className={({ isActive }) =>
+                    isActive ? s.active : s.isActive
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"register"}
+                  className={({ isActive }) =>
+                    isActive ? s.active : s.isActive
+                  }
+                >
+                  Register
+                </NavLink>
+              </li>
+            </ul>
             <Outlet />
           </div>
         </div>

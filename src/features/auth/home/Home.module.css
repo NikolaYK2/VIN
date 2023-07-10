@@ -1,17 +1,21 @@
 .home {
   flex: 1 1 auto;
-  height: 100vh;
+  height: 100%;
   border: 2px solid red;
 }
 .home .container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin: 15% auto 0;
+  margin: 10% auto 0;
+}
+@media (max-width: 960px) {
+  .home .container {
+    display: block;
+  }
 }
 .home .container .item {
   flex: 1 1 40%;
-  max-width: 400px;
-  min-width: 250px;
   color: #fff;
   padding: 30px 30px 30px 10px;
 }
@@ -27,35 +31,120 @@
 .home .container .componentAuth {
   display: flex;
   justify-content: end;
-  align-items: center;
-  flex: 1 1 auto;
-  max-width: 800px;
-  width: 100%;
+  flex: 1 1 60%;
 }
-.home .container .componentAuth .switchAuth {
+@media (max-width: 960px) {
+  .home .container .componentAuth {
+    justify-content: center;
+    margin: 10% 0 0;
+  }
+}
+.home .container .componentAuth .block {
   display: flex;
-  justify-content: end;
-  transform: translate(40%, 0) rotate(270deg);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
-  max-height: 50px;
-  width: 100%;
-}
-.home .container .componentAuth .switchAuth li {
-  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: 505px;
+  height: "";
   align-items: center;
-  margin: 0 10px;
+  border-radius: 6px;
+  margin: 0 5%;
 }
-.home .container .componentAuth .switchAuth li > a {
+.home .container .componentAuth .block:before {
+  display: flex;
+  position: absolute;
+  top: 20%;
+  left: "";
+  bottom: "";
+  right: -3.5%;
+  width: 10%;
+  height: 60%;
   display: block;
+  content: "";
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border-radius: 0 6px 6px 0;
+}
+.home .container .componentAuth .block:after {
+  display: block;
+  content: "";
+  width: 5%;
+  height: 70%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  border-radius: 0 6px 6px 0;
+}
+@media (max-width: 960px) {
+  .home .container .componentAuth .block:after, .home .container .componentAuth .block:before {
+    display: none;
+  }
+}
+.home .container .componentAuth .block .switchAuth {
+  display: flex;
+  position: absolute;
+  top: 45%;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: 70%;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-55%, 0) rotate(270deg);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  z-index: 1;
+  border-radius: 6px 6px 0 0;
+}
+@media (max-width: 960px) {
+  .home .container .componentAuth .block .switchAuth {
+    display: flex;
+    position: absolute;
+    top: -50px;
+    left: 15%;
+    bottom: "";
+    right: "";
+    width: 70%;
+    height: 50px;
+    transform: none;
+  }
+}
+.home .container .componentAuth .block .switchAuth li {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: "";
+  height: "";
+}
+.home .container .componentAuth .block .switchAuth li a {
   font-size: 1.1428571429rem;
   padding: 5px 30px;
-  color: white;
 }
-.home .container .componentAuth .data {
-  display: flex;
-  max-width: 510px;
-  width: 100%;
-  padding: 0 10px 0 0;
+.home .container .componentAuth .block .switchAuth li:nth-child(2):after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: 1px;
+  height: 20px;
+  background: #fff;
+  opacity: 0.5;
+}
+.home .container .componentAuth .block .end {
+  width: 20px;
+}
+
+.active {
+  color: #fff;
+}
+
+.isActive {
+  color: #939598;
 }
 
 /*# sourceMappingURL=Home.module.css.map */

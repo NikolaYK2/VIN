@@ -23,6 +23,8 @@
   padding: 40px 40px 40px 60px;
   background: rgb(74, 74, 74);
   color: #fff;
+  z-index: 1;
+  border-radius: 6px;
 }
 .containerAuth > p {
   text-transform: uppercase;
