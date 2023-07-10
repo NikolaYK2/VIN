@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom"
 import { IconSvg } from "@/assets/image/SVG/iconSVG"
 import bcProfJ from "@/assets/image/imgWeb/prof/bcProf.jpg"
 import bcProfW from "@/assets/image/imgWeb/prof/bcProf.webp"
+import avatar from "@/assets/image/imgWeb/prof/avatar.jpg"
 
 export const Profile = () => {
   console.log("prof")
@@ -19,11 +20,15 @@ export const Profile = () => {
   //АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ ВМОНТИРОВАНИИ КОМПОНЕНТЫ ---------
   const profileRef = useRef<HTMLElement>(null)
   const asideBarRef = useRef<HTMLElement>(null)
+  const avaRef = useRef<HTMLHeadingElement>(null)
+  const nameRef = useRef<HTMLHeadingElement>(null)
 
   useLayoutEffect(() => {
     requestAnimationFrame(() => {
       profileRef.current?.classList.add(s.activeProfile)
       asideBarRef.current?.classList.add(s.activeBar)
+      avaRef.current?.classList.add(s.activeAva)
+      nameRef.current?.classList.add(s.name)
     })
   }, [])
 
@@ -59,14 +64,25 @@ export const Profile = () => {
             </ul>
           </nav>
         </aside>
+
         <section className={s.items}>
+          {/*bc prof --------*/}
           <picture>
             <source srcSet={bcProfW} type={"image/webp"} />
             <source srcSet={bcProfJ} type={"image/jpg"} />
             <img src={bcProfJ} alt="" />
           </picture>
 
-          <div></div>
+          {/*avatar prof -----------*/}
+          <div className={`${s.avatarUser}`} ref={avaRef}>
+            <img src={avatar} alt="" />
+            <h2 ref={nameRef}>Nik</h2>
+          </div>
+
+          {/*item prof ------------*/}
+          <p></p>
+          <p></p>
+          <p></p>
         </section>
       </div>
     </section>
