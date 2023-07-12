@@ -10,6 +10,7 @@ import { Auth } from "@/common/components/auth/Auth"
 import { Profile } from "@/features/auth/profile/Profile"
 import { Message } from "@/features/auth/profile/message/Message"
 import { CheckEmail } from "@/features/auth/checkEmail/CheckEmail"
+import { Personal } from "@/features/auth/profile/personal/Personal"
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
           {
             path: "message",
             element: <Message />,
+          },
+          {
+            path: "personalData",
+            element: <Personal />,
           },
         ],
       },

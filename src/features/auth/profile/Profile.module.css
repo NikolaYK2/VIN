@@ -1,25 +1,145 @@
 .profile {
-  flex: 1 1 auto;
-  padding: 50px 0 10px;
-  height: 100%;
-}
-.profile .container {
+  position: relative;
+  padding: 50px 0 0;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.profile .items {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: 100%;
+  height: "";
+  max-height: 300px;
+  height: 100%;
+  margin: -50px 0 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.profile .items:before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.15) 58%, rgba(0, 0, 0, 0.3) 100%);
+}
+.profile .containerPhoto {
+  display: flex;
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: "";
+  height: 1px;
+  z-index: 2;
+}
+.profile .containerPhoto .photoUser {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  bottom: "";
+  right: "";
+  width: "";
+  height: "";
+  width: 200px;
+  height: 200px;
+  border-radius: 25% 25% 0 25%;
+  border: 20px solid #202122;
+  transform: scale(0.1);
+  opacity: 0.3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.profile .containerPhoto .photoUser h2 {
+  display: block;
+  position: absolute;
+  top: "";
+  left: "";
+  bottom: 0;
+  right: 0;
+  width: "";
+  height: "";
+  max-width: 100%;
+  font-size: 2.1428571429rem;
+  transform: scale(0.1);
+  opacity: 0.1;
+  color: #fff;
+}
+.profile .containerPhoto .photoUser h2:hover {
+  text-decoration: underline;
+}
+.profile .containerPhoto .photoUser .nameActive {
+  transition: all 0.3s ease-in-out 0.1s;
+  transform: translate(60px, 5px) scale(1);
+  opacity: 1;
+}
+.profile .containerPhoto .activeAva {
+  transition: all 0.3s ease-in-out 0s;
+  transform: translate(0, -75%) scale(1);
+  opacity: 1;
+}
+.profile .container {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+}
+@media (max-width: 500px) {
+  .profile .container {
+    flex-direction: column-reverse;
+    justify-content: start;
+  }
 }
 .profile .container .asideBar {
   max-width: 140px;
   width: 100%;
-  background: linear-gradient(130deg, rgb(74, 74, 74) 59%, rgba(74, 74, 74, 0.5) 70%, rgba(32, 33, 34, 0.1) 84%);
+  height: auto;
+  margin: 50px 0 0 0;
+  background: linear-gradient(130deg, rgb(74, 74, 74) 45%, rgba(74, 74, 74, 0.5) 63%, rgba(32, 33, 34, 0.1) 74%);
   transform: translate(0, -150%);
   transition: all 0.3s ease 0s;
+  z-index: 1;
+}
+@media (max-width: 500px) {
+  .profile .container .asideBar {
+    max-width: 1200px;
+    width: 100%;
+  }
 }
 .profile .container .asideBar .nav {
   padding: 20px 5px;
 }
+@media (max-width: 500px) {
+  .profile .container .asideBar .nav {
+    padding: 0;
+    max-width: 1200px;
+    width: 100%;
+  }
+}
 .profile .container .asideBar .nav ul {
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 500px) {
+  .profile .container .asideBar .nav ul {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 .profile .container .asideBar .nav ul li {
   position: relative;
@@ -33,6 +153,11 @@
   height: "";
   padding: 10px 0;
 }
+@media (max-width: 500px) {
+  .profile .container .asideBar .nav ul li {
+    margin: 0 0 0 15%;
+  }
+}
 .profile .container .asideBar .nav ul li a {
   display: flex;
   align-items: center;
@@ -42,95 +167,23 @@
 .profile .container .asideBar .nav ul li a div {
   width: 30px;
   height: 30px;
+  padding: 3px;
   margin: 0 5px;
+}
+.profile .container .asideBar .nav ul li a div svg path {
+  fill: rgba(255, 255, 255, 0.5);
+}
+@media (max-width: 500px) {
+  .profile .container .asideBar .nav ul li span {
+    display: none;
+  }
 }
 .profile .container .activeBar {
   transition: all 0.3s ease-in-out 0s;
-  transform: translate(0, 0%);
-}
-.profile .container .items {
-  display: block;
-  position: relative;
-  top: 0;
-  left: 0;
-  bottom: "";
-  right: "";
-  width: 100%;
-  height: "";
-  max-height: 400px;
-  height: 100%;
-  margin: 2.5% 0 0;
-}
-.profile .container .items picture {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: "";
-  right: "";
-  width: 100%;
-  height: 100%;
   transform: translate(0, 0);
-  overflow: hidden;
-  z-index: 1;
 }
-.profile .container .items picture img,
-.profile .container .items picture source {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.profile .container .items .avatarUser {
-  display: block;
-  position: absolute;
-  top: "";
-  left: 5%;
-  bottom: 0;
-  right: "";
-  width: "";
-  height: "";
-  max-width: 300px;
-  width: 100%;
-  max-height: 300px;
-  border-radius: 25% 25% 0 25%;
-  border: 20px solid #202122;
-  z-index: 2;
-  transform: scale(0.1);
-  opacity: 0.3;
-}
-.profile .container .items .avatarUser img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  margin: 0 100px 0 0;
-  border-radius: 21% 21% 0 21%;
-}
-.profile .container .items .activeAva {
-  transition: all 0.3s ease-in-out 0s;
-  transform: translate(0, 30%) scale(1);
-  opacity: 1;
-}
-.profile .container .items h2 {
-  display: block;
-  position: absolute;
-  top: "";
-  left: 20%;
-  bottom: -3%;
-  right: "";
-  width: "";
-  height: "";
-  z-index: -1;
-  font-size: 4.2857142857rem;
-  color: #fff;
-}
-.profile .container .items .name {
-  transition: all 0.3s ease-in-out 0.1s;
-  transform: translate(250%, 0);
-}
-
-.activeBar {
-  transition: all 0.3s ease-in-out 0s;
-  transform: translate(0, 0%);
+.profile .container .containerContent {
+  flex: 1 1 auto;
 }
 
 .activeProfile {

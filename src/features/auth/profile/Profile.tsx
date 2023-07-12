@@ -1,10 +1,9 @@
 import React, { useLayoutEffect, useRef } from "react"
 import s from "./Profile.module.scss"
 import sApp from "@/assets/SCSS/style/continerApp.module.scss"
-import { NavLink } from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom"
 import { IconSvg } from "@/assets/image/SVG/iconSVG"
 import bcProfJ from "@/assets/image/imgWeb/prof/bcProf.jpg"
-import bcProfW from "@/assets/image/imgWeb/prof/bcProf.webp"
 import avatar from "@/assets/image/imgWeb/prof/avatar.jpg"
 
 export const Profile = () => {
@@ -28,16 +27,45 @@ export const Profile = () => {
       profileRef.current?.classList.add(s.activeProfile)
       asideBarRef.current?.classList.add(s.activeBar)
       avaRef.current?.classList.add(s.activeAva)
-      nameRef.current?.classList.add(s.name)
+      nameRef.current?.classList.add(s.nameActive)
     })
   }, [])
 
   return (
     <section className={`${s.profile}`} ref={profileRef}>
-      <div className={`${s.container} ${sApp.containerDefaultApp}`}>
+      {/*ФОн profile ------------------------*/}
+      <div
+        className={`${s.items}`}
+        style={{ backgroundImage: `url(${bcProfJ})` }}
+      ></div>
+      {/*photo user ----------------------*/}
+      <div className={`${s.containerPhoto} ${sApp.containerDefaultApp}`}>
+        <div
+          className={`${s.photoUser}`}
+          ref={avaRef}
+          style={{ backgroundImage: `url(${avatar})` }}
+        >
+          {/*<img src={avatar} alt="" />*/}
+          <NavLink to={"personalData"}>
+            <h2 ref={nameRef}>Nik</h2>
+          </NavLink>
+        </div>
+      </div>
+      <section className={`${s.container}`}>
         <aside className={`${s.asideBar}`} ref={asideBarRef}>
           <nav className={s.nav}>
             <ul>
+              <li>
+                <NavLink
+                  to={"personalData"}
+                  className={({ isActive }) => (isActive ? sApp.activeBut : "")}
+                >
+                  <div>
+                    <IconSvg name={"personal"} />
+                  </div>
+                  <span>personal</span>
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to={"/s"}
@@ -46,7 +74,7 @@ export const Profile = () => {
                   <div>
                     <IconSvg name={"friends"} />
                   </div>
-                  friends
+                  <span>friends</span>
                 </NavLink>
               </li>
               <li>
@@ -57,7 +85,7 @@ export const Profile = () => {
                   <div>
                     <IconSvg name={"message"} />
                   </div>
-                  messages
+                  <span>messages</span>
                 </NavLink>
               </li>
               <li></li>
@@ -65,26 +93,12 @@ export const Profile = () => {
           </nav>
         </aside>
 
-        <section className={s.items}>
-          {/*bc prof --------*/}
-          <picture>
-            <source srcSet={bcProfW} type={"image/webp"} />
-            <source srcSet={bcProfJ} type={"image/jpg"} />
-            <img src={bcProfJ} alt="" />
-          </picture>
-
-          {/*avatar prof -----------*/}
-          <div className={`${s.avatarUser}`} ref={avaRef}>
-            <img src={avatar} alt="" />
-            <h2 ref={nameRef}>Nik</h2>
-          </div>
-
-          {/*item prof ------------*/}
-          <p></p>
-          <p></p>
-          <p></p>
+        <section
+          className={`${s.containerContent} ${sApp.containerDefaultApp}`}
+        >
+          <Outlet />
         </section>
-      </div>
+      </section>
     </section>
   )
 }
