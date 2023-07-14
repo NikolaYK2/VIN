@@ -24,6 +24,6 @@ export type AuthRegisterType = {
 
 export const authApi = {
   register: (data: AuthRegisterType) => {
-    return authInstance.post<{ User: AuthRegisterType }>("register", data)
+    return authInstance.post<{ User: AuthRegisterType }>("register/", data)
   },
 }

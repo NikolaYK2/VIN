@@ -26,3 +26,4 @@ const slice = createSlice({
 })
 
 export const authReducer = slice.reducer
+export const authThunk = { register }

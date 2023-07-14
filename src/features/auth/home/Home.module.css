@@ -2,6 +2,11 @@
   flex: 1 1 auto;
   height: 100%;
   border: 2px solid red;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../../../assets/image/imgWeb/home/hom.webp"), url("../../../assets/image/imgWeb/home/hom.jpg");
+  background-size: cover;
+  background-position: 0 90%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 .home .container {
   display: flex;
@@ -32,6 +37,7 @@
   display: flex;
   justify-content: end;
   flex: 1 1 60%;
+  height: 100%;
 }
 @media (max-width: 960px) {
   .home .container .componentAuth {

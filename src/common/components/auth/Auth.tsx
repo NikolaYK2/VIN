@@ -10,6 +10,7 @@ import {
 import s from "./Auth.module.scss"
 import { Button } from "@/common/components/button/Button"
 import { useAppDispatch } from "@/app/hooks"
+import { authThunk } from "@/features/auth/authSlice"
 
 type AuthType = {
   greetings: string
@@ -41,9 +42,12 @@ export const Auth = (props: AuthType) => {
       repeatPassword: "",
     },
   })
+  console.log(watch())
   //FN -------------------------------------------
   const onSubmit: SubmitHandler<AuthRegisterType> = (data) => {
     console.log(data)
+    const { email, username, password } = data
+    dispatch(authThunk.register({ email, username, password }))
     reset()
   }
   //STYLE INPUT---------------------------------------
@@ -59,10 +63,12 @@ export const Auth = (props: AuthType) => {
     <div className={s.containerAuth}>
       <p>{props.greetings}</p>
       <h1>{props.name}</h1>
+
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={s.blockInput}>
           <input
             className={activeEm}
+            autoComplete={"on"}
             type="email"
             {...register("email", {
               required: fieldInput,

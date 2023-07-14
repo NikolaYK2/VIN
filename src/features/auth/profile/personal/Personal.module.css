@@ -1,7 +1,32 @@
 .personalContain {
-  margin: 50px 2% 0;
-  color: red;
-  border: 2px solid red;
+  display: flex;
+  justify-content: start;
+  color: #fff;
+  height: 100%;
+  margin: 0 15px;
+  opacity: 0;
+  transition: all 0.3s ease-in-out 0s;
+}
+.personalContain .personalData {
+  margin: 50px 0 15px;
+  padding: 3.1% 4% 4% 4%;
+  background: #141516;
+  width: 100%;
+  height: auto;
+}
+.personalContain .personalData li {
+  margin: 0 0 4%;
+}
+.personalContain .personalData li h2 {
+  font-size: clamp(1.1428571429rem, 5vw, 1.2857142857rem);
+}
+.personalContain .personalData li p {
+  font-size: clamp(1rem, 5vw, 1.1428571429rem);
+}
+
+.runPersonal {
+  opacity: 1;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 /*# sourceMappingURL=Personal.module.css.map */
