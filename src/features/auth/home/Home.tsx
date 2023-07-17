@@ -1,14 +1,13 @@
 import React from "react";
 import sApp from "@/assets/SCSS/style/continerApp.module.scss";
 import s from "./Home.module.scss";
-import { Navigate, NavLink, Outlet } from "react-router-dom";
-import { useAppSelector } from "@/app/hooks";
+import { NavLink, Outlet } from "react-router-dom";
 
 export const Home = () => {
-  const success = useAppSelector((state) => state.auth.success);
-  if (success) {
-    return <Navigate to={"/profile"} />;
-  }
+  // const success = useAppSelector((state) => state.auth.success);
+  // if (success) {
+  //   return <Navigate to={"/profile"} />;
+  // }
   return (
     <div className={s.home}>
       <div className={`${s.container} ${sApp.containerDefaultApp}`}>

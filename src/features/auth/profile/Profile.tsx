@@ -9,7 +9,7 @@ import { useAppSelector } from "@/app/hooks";
 
 export const Profile = () => {
   console.log("prof");
-  const success = useAppSelector((state) => state.auth.success);
+  const isApprove = useAppSelector((state) => state.auth.profile?.user.is_approve);
   const userName = useAppSelector((state) => state.auth.profile?.user.username);
 
   // const [styleAsideBar, setStyleAsideBar] = useState("")
@@ -35,9 +35,10 @@ export const Profile = () => {
     });
   }, []);
 
-  if (!success) {
-    return <Navigate to={"/home/register"} />;
+  if (!isApprove) {
+    return <Navigate to={"/home/login"} replace={true} />;
   }
+
   return (
     <section className={`${s.profile}`} ref={profileRef}>
       {/*ФОн profile ------------------------*/}

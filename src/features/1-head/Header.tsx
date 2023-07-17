@@ -11,7 +11,7 @@ export const Header = () => {
   const [modBurger, setStyleBurger] = useState("");
   const [switchNav, setSwitchNav] = useState(true);
 
-  const success = useAppSelector((state) => state.auth.success);
+  const isApprove = useAppSelector((state) => state.auth.profile?.user.is_approve);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export const Header = () => {
   };
 
   const logOutHandle = () => {
-    if (success) {
+    if (isApprove) {
       dispatch(authThunk.logOut());
     } else {
       navigate("/home/login");
@@ -50,7 +50,7 @@ export const Header = () => {
           <IconSvg name={"logo"} />
         </div>
         <div className={s.logOut}>
-          <button onClick={logOutHandle}>{success ? "LogOut" : "login"}</button>
+          <button onClick={logOutHandle}>{isApprove ? "LogOut" : "login"}</button>
         </div>
 
         <div className={`${s.burger} ${modBurger}`} onClick={burgerHandle}>

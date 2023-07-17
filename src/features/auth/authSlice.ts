@@ -121,7 +121,6 @@ const slice = createSlice({
       .addCase(profile.fulfilled, (state, action) => {
         // сохраняем профиль в стейте
         if (action) state.profile = action.payload.profile;
-        state.success = true;
       })
       .addCase(approve.fulfilled, (state, action) => {
         // сохраняем подтверждение в стейте
@@ -129,6 +128,8 @@ const slice = createSlice({
       })
       .addCase(logOut.fulfilled, (state) => {
         state.token = null;
+        state.profile = null;
+        state.isLogged = false;
         state.success = false;
       });
     // обрабатываем отклоненные и ожидающие действия по желанию

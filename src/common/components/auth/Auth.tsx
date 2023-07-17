@@ -1,6 +1,6 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { AuthApproveType, AuthorizationType, AuthRegisterType } from "@/features/auth/authApi";
+import { AuthApproveType, AuthorizationType, AuthRegisterType, LoginTokenType } from "@/features/auth/authApi";
 import { fieldInput, fieldPassword, fieldUserName, validEmail } from "@/common/utils/validate";
 import s from "./Auth.module.scss";
 import { Button } from "@/common/components/button/Button";
@@ -18,7 +18,7 @@ type AuthForm = AuthRegisterType &
   };
 
 export const Auth = (props: AuthType) => {
-  const success = useAppSelector((state) => state.auth.success);
+  const isApprove = useAppSelector((state) => state.auth.profile?.user.is_approve);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -49,9 +49,11 @@ export const Auth = (props: AuthType) => {
       try {
         const register = await dispatch(authThunk.register({ email, username, password }));
         if ((register.payload as { authorization: AuthorizationType }).authorization.User) {
-          await dispatch(authThunk.login({ email, password }));
-          navigate("/home/approve", { replace: true });
-          await dispatch(authThunk.approve({ key }));
+          const token = await dispatch(authThunk.login({ email, password }));
+          if ((token.payload as { token: LoginTokenType }).token.access) {
+            navigate("/home/approve", { replace: true });
+          }
+          // await dispatch(authThunk.approve({ key }));
           // await dispatch(authThunk.profile());
         }
       } catch (e: any) {
@@ -61,9 +63,16 @@ export const Auth = (props: AuthType) => {
     } else if (props.greetings === "login") {
       await dispatch(authThunk.login({ email, password }));
       await dispatch(authThunk.profile());
+      if (!isApprove) {
+        navigate("/home/approve", { replace: true });
+      }
     } else if (props.greetings === "approve") {
       // await dispatch(authThunk.login({ email, password }));
-      await dispatch(authThunk.approve({ key }));
+      const resSuccess = await dispatch(authThunk.approve({ key }));
+      if ((resSuccess.payload as { success: boolean }).success) {
+        navigate("/profile", { replace: true });
+      }
+      await dispatch(authThunk.profile());
     }
     reset();
   };
@@ -72,9 +81,10 @@ export const Auth = (props: AuthType) => {
   //SWITCH LOGIN AND REGISTER -------------------------
   const switchComponent = props.greetings.toLowerCase();
 
-  if (success) {
-    return <Navigate to="/profile" replace={true} />;
+  if (isApprove) {
+    return <Navigate to="/profile" />;
   }
+
   return (
     <div className={s.containerAuth}>
       <p>{props.greetings}</p>
