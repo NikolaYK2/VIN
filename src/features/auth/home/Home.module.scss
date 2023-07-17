@@ -5,17 +5,17 @@
   flex: 1 1 auto;
   height: 100%;
   border: 2px solid red;
-  background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.7)
-    ),
-    url("../../../assets/image/imgWeb/home/hom.webp"),
-    url("../../../assets/image/imgWeb/home/hom.jpg");
-  background-size: cover;
-  background-position: 0 90%;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  //background-image: linear-gradient(
+  //    to right,
+  //    rgba(0, 0, 0, 0.7),
+  //    rgba(0, 0, 0, 0.7)
+  //  ),
+  //  url("../../../assets/image/imgWeb/home/hom.webp"),
+  //  url("../../../assets/image/imgWeb/home/hom.jpg");
+  //background-size: cover;
+  //background-position: 0 90%;
+  //background-attachment: fixed;
+  //background-repeat: no-repeat;
 
   .container {
     display: flex;
@@ -131,10 +131,6 @@
               opacity: 0.5;
             }
           }
-        }
-
-        .end {
-          width: 20px;
         }
       }
     }

@@ -1,33 +1,47 @@
-import React, { useEffect, useState } from "react"
-import s from "./Header.module.scss"
-import sApp from "@/assets/SCSS/style/continerApp.module.scss"
-import { IconSvg } from "@/assets/image/SVG/iconSVG"
-import { NavLink } from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import s from "./Header.module.scss";
+import sApp from "@/assets/SCSS/style/continerApp.module.scss";
+import { IconSvg } from "@/assets/image/SVG/iconSVG";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { authThunk } from "@/features/auth/authSlice";
 
 export const Header = () => {
-  const [modNav, setStyleNav] = useState(s.headerNav)
-  const [modBurger, setStyleBurger] = useState("")
-  const [switchNav, setSwitchNav] = useState(true)
+  const [modNav, setStyleNav] = useState(s.headerNav);
+  const [modBurger, setStyleBurger] = useState("");
+  const [switchNav, setSwitchNav] = useState(true);
+
+  const success = useAppSelector((state) => state.auth.success);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const burgerHandle = () => {
+    setSwitchNav(!switchNav);
+  };
+
+  const activeLinkHandle = () => {
+    setSwitchNav(true);
+  };
+
+  const logOutHandle = () => {
+    if (success) {
+      dispatch(authThunk.logOut());
+    } else {
+      navigate("/home/login");
+    }
+  };
 
   useEffect(() => {
     if (switchNav) {
-      setStyleNav(s.headerNav)
-      setStyleBurger(s.menuBurger)
-      document.body.style.overflow = "unset"
+      setStyleNav(s.headerNav);
+      setStyleBurger(s.menuBurger);
+      document.body.style.overflow = "unset";
     } else {
-      setStyleNav(s.activeMenu)
-      setStyleBurger(s.activeBurger)
-      document.body.style.overflow = "hidden"
+      setStyleNav(s.activeMenu);
+      setStyleBurger(s.activeBurger);
+      document.body.style.overflow = "hidden";
     }
-  }, [switchNav])
-
-  const burgerHandle = () => {
-    setSwitchNav(!switchNav)
-  }
-
-  const activeLinkHandle = () => {
-    setSwitchNav(true)
-  }
+  }, [switchNav]);
 
   return (
     <section className={`${s.head}`}>
@@ -35,11 +49,14 @@ export const Header = () => {
         <div className={s.logo}>
           <IconSvg name={"logo"} />
         </div>
-        <div>
-          <div className={`${s.burger} ${modBurger}`} onClick={burgerHandle}>
-            <span></span>
-          </div>
+        <div className={s.logOut}>
+          <button onClick={logOutHandle}>{success ? "LogOut" : "login"}</button>
         </div>
+
+        <div className={`${s.burger} ${modBurger}`} onClick={burgerHandle}>
+          <span></span>
+        </div>
+
         <nav className={`${s.nav} ${modNav}`}>
           <IconSvg name={"menuBurger"} />
           <ul>
@@ -62,18 +79,12 @@ export const Header = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/s"
-                className={({ isActive }) => (isActive ? sApp.activeBut : "")}
-              >
+              <NavLink to="/s" className={({ isActive }) => (isActive ? sApp.activeBut : "")}>
                 notes
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/ф"
-                className={({ isActive }) => (isActive ? sApp.activeBut : "")}
-              >
+              <NavLink to="/ф" className={({ isActive }) => (isActive ? sApp.activeBut : "")}>
                 news
               </NavLink>
             </li>
@@ -81,5 +92,5 @@ export const Header = () => {
         </nav>
       </div>
     </section>
-  )
-}
+  );
+};

@@ -35,26 +35,14 @@
   content: "";
   background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.15) 58%, rgba(0, 0, 0, 0.3) 100%);
 }
-.profile .containerPhoto {
+.profile .containerUser {
   display: flex;
-  position: relative;
-  top: 0;
-  left: 0;
-  bottom: "";
-  right: "";
-  width: "";
+  width: 100%;
   height: 1px;
+  margin: 0 auto;
   z-index: 2;
 }
-.profile .containerPhoto .photoUser {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 5%;
-  bottom: "";
-  right: "";
-  width: "";
-  height: "";
+.profile .containerUser .photoUser {
   width: 200px;
   height: 200px;
   border-radius: 25% 25% 0 25%;
@@ -65,32 +53,25 @@
   background-position: center;
   background-repeat: no-repeat;
 }
-.profile .containerPhoto .photoUser h2 {
-  display: block;
-  position: absolute;
-  top: "";
-  left: "";
-  bottom: 0;
-  right: 0;
-  width: "";
-  height: "";
+.profile .containerUser .activeAva {
+  transition: all 0.3s ease-in-out 0s;
+  transform: translate(0, -75%) scale(1);
+  opacity: 1;
+}
+.profile .containerUser h2 {
   max-width: 100%;
-  font-size: 2.1428571429rem;
+  font-size: clamp(1.1428571429rem, 5vw, 2.1428571429rem);
   transform: scale(0.1);
   opacity: 0.1;
   color: #fff;
 }
-.profile .containerPhoto .photoUser h2:hover {
+.profile .containerUser h2:hover {
   text-decoration: underline;
 }
-.profile .containerPhoto .photoUser .nameActive {
+.profile .containerUser .nameActive {
   transition: all 0.3s ease-in-out 0.1s;
-  transform: translate(60px, 5px) scale(1);
-  opacity: 1;
-}
-.profile .containerPhoto .activeAva {
-  transition: all 0.3s ease-in-out 0s;
-  transform: translate(0, -75%) scale(1);
+  max-width: 100%;
+  transform: scale(1);
   opacity: 1;
 }
 .profile .container {

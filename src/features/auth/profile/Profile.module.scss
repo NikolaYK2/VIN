@@ -32,13 +32,18 @@
     }
   }
 
-  .containerPhoto {
-    @include position(flex, relative, 0, 0, "", "", "", 1px);
+  .containerUser {
+    //@include position(flex, relative, 0, 0, "", "", "", 1px);
+    display: flex;
+    width: 100%;
+    height: 1px;
+
+    margin: 0 auto;
     z-index: 2;
 
     //AVATAR -----------
     .photoUser {
-      @include position(flex, absolute, 0, 5%, "", "", "", "");
+      //@include position(flex, absolute, 0, 5%, "", "", "", "");
       width: 200px;
       height: 200px;
       border-radius: 25% 25% 0 25%;
@@ -49,29 +54,30 @@
       background-position: center;
       background-repeat: no-repeat;
 
-      h2 {
-        @include position(block, absolute, "", "", 0, 0, "", "");
-        max-width: 100%;
-        font-size: to-rem(30);
-        transform: scale(0.1);
-        opacity: 0.1;
-        color: $colorApp;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      .nameActive {
-        transition: all 0.3s ease-in-out 0.1s;
-        transform: translate(60px, 5px) scale(1);
-        opacity: 1;
-      }
     }
 
     .activeAva {
       transition: all 0.3s ease-in-out 0s;
       transform: translate(0, -75%) scale(1);
+      opacity: 1;
+    }
+    h2 {
+      //@include position(block, absolute, "", "", 0, 0, 100%, 30px);
+      max-width: 100%;
+      font-size: clamp(to-rem(16), 5vw, to-rem(30));
+      transform: scale(0.1);
+      opacity: 0.1;
+      color: $colorApp;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .nameActive {
+      transition: all 0.3s ease-in-out 0.1s;
+      max-width: 100%;
+      transform:scale(1);
       opacity: 1;
     }
   }

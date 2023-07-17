@@ -26,8 +26,22 @@
 .head .container .logo svg path:first-child {
   fill: #fff;
 }
+.head .container .logOut {
+  z-index: 100000;
+}
+.head .container .logOut button {
+  background: transparent;
+  color: #fff;
+  font-size: 1.1428571429rem;
+  text-shadow: 0 0 10px rgb(112, 169, 3);
+}
 .head .container .menuBurger {
   display: none;
+}
+.head .container .containerNav {
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
 .head .container .nav {
   background: rgb(74, 74, 74);
