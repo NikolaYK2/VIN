@@ -7,6 +7,7 @@ import {
   authProfileType,
   AuthRegisterType,
   LoginTokenType,
+  ResultCode,
 } from "@/features/auth/authApi";
 import { createAppAsyncThunk } from "@/common/utils/creatAppAsyncThunk";
 
@@ -35,7 +36,11 @@ const profile = createAppAsyncThunk<{ profile: authProfileType }>(
     const access = getState().auth.token?.access;
     if (access) {
       const res = await authApi.profile(access);
-      return { profile: res.data };
+      if (res.data.status === ResultCode.ok) {
+        return { profile: res.data };
+      } else {
+        return rejectWithValue("email and userName");
+      }
     } else {
       return rejectWithValue("Access token is missing");
     }

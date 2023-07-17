@@ -1,6 +1,6 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { AuthApproveType, AuthRegisterType } from "@/features/auth/authApi";
+import { AuthApproveType, AuthorizationType, AuthRegisterType } from "@/features/auth/authApi";
 import { fieldInput, fieldPassword, fieldUserName, validEmail } from "@/common/utils/validate";
 import s from "./Auth.module.scss";
 import { Button } from "@/common/components/button/Button";
@@ -48,11 +48,11 @@ export const Auth = (props: AuthType) => {
     if (props.greetings === "register") {
       try {
         const register = await dispatch(authThunk.register({ email, username, password }));
-        if ((register.payload as { success: boolean }).success) {
-          // await dispatch(authThunk.login({ email, password }));
+        if ((register.payload as { authorization: AuthorizationType }).authorization.User) {
+          await dispatch(authThunk.login({ email, password }));
           navigate("/home/approve", { replace: true });
           await dispatch(authThunk.approve({ key }));
-          await dispatch(authThunk.profile());
+          // await dispatch(authThunk.profile());
         }
       } catch (e: any) {
         throw Error("hz");
@@ -62,6 +62,7 @@ export const Auth = (props: AuthType) => {
       await dispatch(authThunk.login({ email, password }));
       await dispatch(authThunk.profile());
     } else if (props.greetings === "approve") {
+      // await dispatch(authThunk.login({ email, password }));
       await dispatch(authThunk.approve({ key }));
     }
     reset();
