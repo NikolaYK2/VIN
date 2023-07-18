@@ -45,38 +45,35 @@ export const Auth = (props: AuthType) => {
   const onSubmit: SubmitHandler<AuthForm> = async (data) => {
     console.log(data);
     const { email, username, password, key } = data;
-    if (props.greetings === "register") {
-      try {
+    try {
+      if (props.greetings === "register") {
         const register = await dispatch(authThunk.register({ email, username, password }));
         if ((register.payload as { authorization: AuthorizationType }).authorization.User) {
           const token = await dispatch(authThunk.login({ email, password }));
           if ((token.payload as { token: LoginTokenType }).token.access) {
             navigate("/home/approve", { replace: true });
           }
-          // await dispatch(authThunk.approve({ key }));
-          // await dispatch(authThunk.profile());
         }
-      } catch (e: any) {
-        throw Error("hz");
-        // dispatch(authActions.setError(e.erroresoxod@mailto.pluss));
-      }
-    } else if (props.greetings === "login") {
-      const resToken = await dispatch(authThunk.login({ email, password }));
-      if ((resToken.payload as { token: LoginTokenType }).token.access) {
+      } else if (props.greetings === "login") {
+        const resToken = await dispatch(authThunk.login({ email, password }));
+        if ((resToken.payload as { token: LoginTokenType }).token.access) {
+          await dispatch(authThunk.profile());
+          if (!isApprove) {
+            navigate("/home/approve", { replace: true });
+          }
+        }
+      } else if (props.greetings === "approve") {
+        // await dispatch(authThunk.login({ email, password }));
+        const resSuccess = await dispatch(authThunk.approve({ key }));
+        if ((resSuccess.payload as { success: boolean }).success) {
+          navigate("/profile", { replace: true });
+        }
         await dispatch(authThunk.profile());
-        if (!isApprove) {
-          navigate("/home/approve", { replace: true });
-        }
       }
-    } else if (props.greetings === "approve") {
-      // await dispatch(authThunk.login({ email, password }));
-      const resSuccess = await dispatch(authThunk.approve({ key }));
-      if ((resSuccess.payload as { success: boolean }).success) {
-        navigate("/profile", { replace: true });
-      }
-      await dispatch(authThunk.profile());
+    } catch (e) {
+    } finally {
+      reset();
     }
-    reset();
   };
   //STYLE INPUT---------------------------------------
 
