@@ -15,7 +15,9 @@
 
   transition: all 0.3s ease-in-out 0s;
 
-  .personalData {
+  .personalBlock {
+    display: flex;
+    flex-direction: column;
     margin: 50px 0 15px;
     padding: 3.1% 4% 4% 4%;
 
@@ -24,16 +26,41 @@
     width: 100%;
     height: auto;
 
-    li {
-      margin: 0 0 4%;
+    form {
+      display: flex;
+      flex-direction: column;
 
-      h2 {
-        font-size: clamp(to-rem(16), 5vw, to-rem(18));
+      li {
+        margin: 0 0 4%;
+
+        span,
+        input {
+          margin: 0 0 0 10px;
+          color: $colorApp;
+        }
+
+        input {
+          background: $HNbc;
+        }
+
+        h2 {
+          font-size: clamp(to-rem(16), 5vw, to-rem(18));
+          color: $active;
+        }
+
+        p {
+          font-size: clamp(to-rem(14), 5vw, to-rem(16));
+          color: $active;
+        }
       }
 
-      p {
-        font-size: clamp(to-rem(14), 5vw, to-rem(16));
+      > label {
+        margin: 0 0 0 auto;
       }
+    }
+
+    > label {
+      margin: 0 0 0 auto;
     }
   }
 }

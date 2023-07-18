@@ -52,6 +52,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  margin: 0 0 0 5%;
 }
 .profile .containerUser .activeAva {
   transition: all 0.3s ease-in-out 0s;
@@ -73,6 +74,7 @@
   max-width: 100%;
   transform: scale(1);
   opacity: 1;
+  margin: 10% 0 0;
 }
 .profile .container {
   position: relative;
@@ -88,19 +90,33 @@
   }
 }
 .profile .container .asideBar {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: "";
+  right: "";
+  width: "";
+  height: 90%;
   max-width: 140px;
   width: 100%;
-  height: auto;
   margin: 50px 0 0 0;
   background: linear-gradient(130deg, rgb(74, 74, 74) 45%, rgba(74, 74, 74, 0.5) 63%, rgba(32, 33, 34, 0.1) 74%);
   transform: translate(0, -150%);
   transition: all 0.3s ease 0s;
   z-index: 1;
 }
+@media (max-width: 1500px) {
+  .profile .container .asideBar {
+    position: relative;
+    height: auto;
+  }
+}
 @media (max-width: 500px) {
   .profile .container .asideBar {
     max-width: 1200px;
     width: 100%;
+    margin: 0;
   }
 }
 .profile .container .asideBar .nav {

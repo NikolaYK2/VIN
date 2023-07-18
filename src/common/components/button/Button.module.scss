@@ -8,6 +8,7 @@
   background: $active;
   border: 1px solid $active;
   transition: all 0.2s ease 0s;
+  cursor: pointer;
 
   &:hover {
     background: none;
@@ -43,6 +44,7 @@
   text-shadow: none;
   border: none;
   opacity: 0.2;
+
   &:hover {
     background: $active;
     box-shadow: none;

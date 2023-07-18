@@ -7,21 +7,43 @@
   opacity: 0;
   transition: all 0.3s ease-in-out 0s;
 }
-.personalContain .personalData {
+.personalContain .personalBlock {
+  display: flex;
+  flex-direction: column;
   margin: 50px 0 15px;
   padding: 3.1% 4% 4% 4%;
   background: #141516;
   width: 100%;
   height: auto;
 }
-.personalContain .personalData li {
+.personalContain .personalBlock form {
+  display: flex;
+  flex-direction: column;
+}
+.personalContain .personalBlock form li {
   margin: 0 0 4%;
 }
-.personalContain .personalData li h2 {
-  font-size: clamp(1.1428571429rem, 5vw, 1.2857142857rem);
+.personalContain .personalBlock form li span,
+.personalContain .personalBlock form li input {
+  margin: 0 0 0 10px;
+  color: #fff;
 }
-.personalContain .personalData li p {
+.personalContain .personalBlock form li input {
+  background: rgb(74, 74, 74);
+}
+.personalContain .personalBlock form li h2 {
+  font-size: clamp(1.1428571429rem, 5vw, 1.2857142857rem);
+  color: rgb(112, 169, 3);
+}
+.personalContain .personalBlock form li p {
   font-size: clamp(1rem, 5vw, 1.1428571429rem);
+  color: rgb(112, 169, 3);
+}
+.personalContain .personalBlock form > label {
+  margin: 0 0 0 auto;
+}
+.personalContain .personalBlock > label {
+  margin: 0 0 0 auto;
 }
 
 .runPersonal {

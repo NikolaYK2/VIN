@@ -40,7 +40,6 @@ export const Auth = (props: AuthType) => {
       key: null as number | null,
     },
   });
-  console.log(watch());
   //FN -------------------------------------------
   const onSubmit: SubmitHandler<AuthForm> = async (data) => {
     console.log(data);

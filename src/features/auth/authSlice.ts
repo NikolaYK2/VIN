@@ -4,33 +4,31 @@ import {
   AuthApproveType,
   AuthLoginType,
   AuthorizationType,
-  authProfileType,
+  AuthProfileType,
   AuthRegisterType,
   LoginTokenType,
   ResultCode,
+  UserType,
 } from "@/features/auth/authApi";
 import { createAppAsyncThunk } from "@/common/utils/creatAppAsyncThunk";
 
 const register = createAppAsyncThunk<{ authorization: AuthorizationType }, AuthRegisterType>(
   "auth/register",
-  async (arg: AuthRegisterType) => {
+  async (arg) => {
     const res = await authApi.register(arg);
     return { authorization: res.data };
   }
 );
 
-const login = createAppAsyncThunk<{ token: LoginTokenType }, AuthLoginType>(
-  "auth/login",
-  async (arg: AuthLoginType) => {
-    const res = await authApi.login(arg);
-    return { token: res.data };
-  }
-);
+const login = createAppAsyncThunk<{ token: LoginTokenType }, AuthLoginType>("auth/login", async (arg) => {
+  const res = await authApi.login(arg);
+  return { token: res.data };
+});
 const logOut = createAppAsyncThunk<{ token: { refresh: null; access: null } }>("auth/logOut", async () => {
   return { token: { refresh: null, access: null } };
 });
 
-const profile = createAppAsyncThunk<{ profile: authProfileType }>(
+const profile = createAppAsyncThunk<{ profile: AuthProfileType }>(
   "auth/profile",
   async (_, { getState, rejectWithValue }) => {
     const access = getState().auth.token?.access;
@@ -72,10 +70,23 @@ const profile = createAppAsyncThunk<{ profile: authProfileType }>(
 //   }
 // );
 
+const profileUpd = createAppAsyncThunk<{ profile: { user: UserType } }, FormData>(
+  "auth/profileUpdate",
+  async (data, { getState, rejectWithValue }) => {
+    const access = getState().auth.token?.access;
+    if (access) {
+      const res = await authApi.profileUpd(data, access);
+      return { profile: { user: res.data } };
+    } else {
+      return rejectWithValue("error upd profile");
+    }
+  }
+);
+
 //проверка почты! -----------------------------------------------
 const approve = createAppAsyncThunk<{ success: boolean }, AuthApproveType>(
   "auth/approve",
-  async (arg: AuthApproveType, { getState, rejectWithValue }) => {
+  async (arg, { getState, rejectWithValue }) => {
     const access = getState().auth.token?.access;
     if (access) {
       const res = await authApi.approve(arg, access);
@@ -90,7 +101,7 @@ const approve = createAppAsyncThunk<{ success: boolean }, AuthApproveType>(
 export type AuthSliceType = {
   authorization: AuthorizationType | null;
   token: LoginTokenType | null;
-  profile: authProfileType | null;
+  profile: AuthProfileType | null;
   success: boolean;
   errors: string;
   isLogged: boolean;
@@ -122,6 +133,10 @@ const slice = createSlice({
         // сохраняем профиль в стейте
         if (action) state.profile = action.payload.profile;
       })
+      .addCase(profileUpd.fulfilled, (state, action) => {
+        // обновляем профиль в стейте
+        if (state.profile) state.profile.user = action.payload.profile.user;
+      })
       .addCase(approve.fulfilled, (state, action) => {
         // сохраняем подтверждение в стейте
         state.success = action.payload.success;
@@ -138,4 +153,4 @@ const slice = createSlice({
 
 export const authReducer = slice.reducer;
 export const authActions = slice.actions;
-export const authThunk = { register, login, approve, profile, logOut };
+export const authThunk = { register, login, approve, profile, profileUpd, logOut };

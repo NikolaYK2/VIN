@@ -22,18 +22,24 @@ export enum ResultCode {
   ok = 200,
 }
 
-export type authProfileType = {
-  status: number;
-  user: {
-    id: number;
-    is_approve: boolean;
-    username: string;
-    email: string;
-    first_name: string;
-    last_name: string;
-    is_coach: boolean;
-  };
+export type UserType = {
+  id: number;
+  is_approve: boolean;
+  email: string;
+  first_name: string;
+  last_name: string;
+  username: string;
+  is_coach: boolean;
+  date_of_birth: null;
+  height: null;
+  weight: null;
+  avatar: null;
 };
+export type AuthProfileType = {
+  status: number;
+  user: UserType;
+};
+export type ProfileDataType = Omit<UserType, "id" | "is_approve" | "avatar" | "username">;
 
 export type ErrorsMessages = {
   token_class?: string;
@@ -65,8 +71,15 @@ export const authApi = {
     });
   },
   profile: (access: string) => {
-    return authInstance.get<authProfileType>("profile", {
+    return authInstance.get<AuthProfileType>("profile", {
       headers: { Authorization: `access ${access}` },
+    });
+  },
+  profileUpd: (data: FormData, access: string) => {
+    return authInstance.patch<UserType>("profile/update/", data, {
+      headers: {
+        Authorization: `access ${access}`,
+      },
     });
   },
 };
