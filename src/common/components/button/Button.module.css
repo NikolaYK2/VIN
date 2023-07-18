@@ -29,4 +29,17 @@
   text-shadow: none;
 }
 
+.disabled {
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+  opacity: 0.2;
+}
+.disabled:hover {
+  background: rgb(112, 169, 3);
+  box-shadow: none;
+  text-shadow: none;
+  border: none;
+}
+
 /*# sourceMappingURL=Button.module.css.map */

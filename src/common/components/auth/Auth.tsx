@@ -29,7 +29,7 @@ export const Auth = (props: AuthType) => {
     watch,
     setValue,
     reset,
-    formState: { errors, touchedFields },
+    formState: { errors, touchedFields, isSubmitting },
   } = useForm<AuthForm>({
     mode: "onBlur",
     defaultValues: {
@@ -61,10 +61,12 @@ export const Auth = (props: AuthType) => {
         // dispatch(authActions.setError(e.erroresoxod@mailto.pluss));
       }
     } else if (props.greetings === "login") {
-      await dispatch(authThunk.login({ email, password }));
-      await dispatch(authThunk.profile());
-      if (!isApprove) {
-        navigate("/home/approve", { replace: true });
+      const resToken = await dispatch(authThunk.login({ email, password }));
+      if ((resToken.payload as { token: LoginTokenType }).token.access) {
+        await dispatch(authThunk.profile());
+        if (!isApprove) {
+          navigate("/home/approve", { replace: true });
+        }
       }
     } else if (props.greetings === "approve") {
       // await dispatch(authThunk.login({ email, password }));
@@ -196,7 +198,7 @@ export const Auth = (props: AuthType) => {
             <p>{errors.key ? errors.key.message : ""}</p>
           </div>
         )}
-        <Button name={props.greetings} />
+        <Button name={props.greetings} disabled={isSubmitting} />
       </form>
     </div>
   );
